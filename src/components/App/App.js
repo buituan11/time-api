@@ -12,6 +12,11 @@ class App extends Component {
       msg: 'now',
     }
   } 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.Time !== nextState.Time ||
+           this.state.tzone !== nextState.tzone ||
+           this.state.msg !== nextState;
+  }
   fetchTime = () => {
     let api = 'https://andthetimeis.com' + '/'+ this.state.tzone + '/' + this.state.msg + '.json';
     console.log( api );
@@ -23,6 +28,7 @@ class App extends Component {
     })
   }
   changeUpdate = ( newUpdate ) => {
+    console.log(newUpdate.tzone);
     if ( newUpdate.tzone && newUpdate.msg){
       this.setState({ tzone: newUpdate.tzone, msg: newUpdate.msg});
       this.fetchTime();

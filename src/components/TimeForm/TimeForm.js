@@ -63,22 +63,25 @@ class TimeForm extends Component {
     render() {
     	let obj = null;
         return (
-        	<form>
-        		<select onChange={ (e) => this.handleChange(e) } >
-        			{ zone.map( (t) => {
-        				return <option key={t} value={t}> {t} </option>
-        			} )}
-        		</select>
-        		<input 
-        			type='text'
-        			placeholder='A String'
-        			ref={ (inp) => { obj = inp }}
-        		/>
-        		<button
-        			type='button'
-        			onClick={ () => this.handleRequest(this.state.tzone, obj.value)}> 
-        			Update request </button>
-        	</form>  
+        	<div className="row"> 
+	        	<small> (use spaces, not '+', example: 'in two hours') </small>
+	        	<form>
+	        		<select onChange={ (e) => this.handleChange(e) } >
+	        			{ zone.map( (t) => {
+	        				return <option key={t} value={t}> {t} </option>
+	        			} )}
+	        		</select>
+	        		<input 
+	        			type='text'
+	        			placeholder='A String'
+	        			ref={ (inp) => { obj = inp }}
+	        		/>
+	        		<button
+	        			type='button'
+	        			onClick={ () => this.handleRequest(this.state.tzone, obj.value)}> 
+	        			Update request </button>
+	        	</form>  
+	        </div>
         );
     }
 }
